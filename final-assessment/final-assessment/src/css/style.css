@@ -209,3 +209,16 @@ footer {
 #search-btn i{
   padding-right: 5px;
 }
+.searchD{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+ }
+
+ .searchBar{
+  width: 80%;
+ }
+
+ .searchBtn{
+  width: 20%;
+ }

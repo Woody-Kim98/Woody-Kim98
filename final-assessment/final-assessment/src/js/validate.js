@@ -1,19 +1,50 @@
 function validate(event) {
-  var lat = parseInt(document.querySelector("#lat").value);
-  var long = parseInt(document.querySelector("#long").value);
-
-  var latError = document.getElementById("errorLat");
-  var longError = document.getElementById("errorLong");
-
-  resetErrors(latError, longError);
-
-  if(isNaN(lat) || (lat < -90 || lat > 90)){
-    showError(latError);
-    return false;
+  var flag = true;
+  function isNumber(n) {
+    return !isNaN(n);
   }
-  else if(isNaN(long) || (long < -180 || long > 180)){
-    longError.style.display = "inline-block";
+
+  function showLatitudeError(msg) {
+    var errMessage = document.querySelector('#error-latitude');
+    errMessage.classList.remove('hidden');
+    errMessage.innerHTML = msg;
+  }
+
+  function showLongitudeError(msg) {
+    var errMessage = document.querySelector('#error-longitude');
+    errMessage.classList.remove('hidden');
+    errMessage.innerHTML = msg;
+  }
+
+  function hideLatitudeError(msg) {
+    var errMessage = document.querySelector('#error-latitude');
+    errMessage.classList.add('hidden');
+    errMessage.innerHTML = '';
+  }  
+
+  function hideLongitudeError(msg) {
+    var errMessage = document.querySelector('#error-longitude');
+    errMessage.classList.add('hidden');
+    errMessage.innerHTML = '';
+  }
+
+  var latitudeV = document.getElementById("latitude").value;
+  var longitudeV = document.getElementById("longitude").value;
+  hideLatitudeError();
+  hideLongitudeError();
+  if(!isNumber(latitudeV) || latitudeV < -90 || latitudeV > 90){
+    flag = false;
+    showLatitudeError("must be a valid Latitude (-90 to 90)");
+  }
+  if(!isNumber(longitudeV) || longitudeV < -180 || longitudeV > 180){
+    flag = false;
+    showLongitudeError("must be a valid Longitude (-180 to 180)");
+  }
+  if(flag){
+    return true;
+  }else{
     return false;
+
   }
 }
 
