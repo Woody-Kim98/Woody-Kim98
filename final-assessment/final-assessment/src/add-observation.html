@@ -55,62 +55,53 @@
       <section>
         <h2>Observation Details</h2>
         <p><span class="required">*</span> Required field</p>
-                <form action="https://formspree.io/f/xayayajl"
-        method="POST">
-          <fieldset>
+        <form action="https://formspree.io/f/xyylyaqd" method="POST">
+          <!-- TODO: create the form based on the specification in the Final Assessment -->
+          <fieldset class="observationP">
             <legend>Observation</legend>
-
-            <label for="Species Guess">Species Guess<span class="required">*</span></label>
-            <input type="text" name="Species Guess" title="Please enter what you think the species is." placeholder="Great Horned Owl" maxlength="200" required>
-
-            <label for="Description">Description<span class="required">*</span></label>
-            <input class="long-input" type="text" name="Description" title="Please enter a description of your photo." placeholder="Roosting on fence post at the edge of a field" required>
-
-            <label for="Date Observed">Date Observed<span class="required">*</span></label>
-            <input type="date" name="Date Observed" title="Please enter the date you observed the species." required>
-
-            <label for="Notes">Notes</label>
-            <textarea id="notes" name="Notes" title="Enter any notes here." placeholder="Notes about observation..."></textarea>
+            <label for="sGuess">Species Guess<span class="required">*</span></label>
+            <input id="sGuess" name="sGuess" class="sGuess" type="text" placeholder="Great Horned Owl" required />
+            <label for="description">Description<span class="required">*</span></label>
+            <input id="description" name="description" class="description" type="text" placeholder="Roosting on fence post at the edge of a field" required />
+            <label for="date">Date Observed<span class="required">*</span></label>
+            <input id="date" name="date" type="date" required />
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="3"  placeholder="Notes about observation..."></textarea>
           </fieldset>
-
-          <fieldset>
+          <fieldset class="location">
             <legend>Location</legend>
-
-            <label for="Latitude">Latitude<span class="required">*</span><span id="errorLat">must be a valid Latitude (-90 to 90)</span></label>
-            <input id="lat" type="text" name="Latitude" title="Please enter the latitude." placeholder="43.7955" required>
-
-            <label for="Longitude">Longitude<span class="required">*</span><span id="errorLong">must be a valid Longitude (-180 to 180)</span></label>
-            <input id="long" type="text" name="Longitude" title="Please enter the longitude." placeholder="-79.3496" required>
-
-            <label for="Checkbox Share Info"><input type="checkbox" name="Checkbox Share Info" title="Check to share location information." > Share location information (i.e., it's ok to make this public)</label>
+            <label for="latitude">Latitude<span class="required">*</span></label>
+            <label id="error-latitude" class="error hidden"></label>
+            <input id="latitude" name="latitude" class="latitude" type="text" placeholder="43.7955" required />
+            <label for="longitude">Longitude<span class="required">*</span></label>
+            <label id="error-longitude" class="error hidden"></label>
+            <input id="longitude" name="longitude" class="longitude" type="text" placeholder="-79.3496" required />
+            <label class="checkbox">
+              <input type="checkbox" value="1" id="share_location" name="share_location">
+              Share location information (i.e., it's ok to make this public)
+            </label>
           </fieldset>
-
-          <fieldset>
+          <fieldset class="photo">
             <legend>Photo</legend>
-
-            <label for="Photo Author">Photographer Name</label>
-            <input class="long-input" type="text" name="Photo Author" title="Enter the photo authors name." placeholder="Karen Shu" maxlength="100">
-
-            <label for="Photo Author Email">Photographer Email</label>
-            <input class="long-input" type="email" name="Photo Author Email" title="Enter the photo authors email." placeholder="kshu@photos.com">
-
-            <label for="Photo File">Photo</label>
-            <input class="" type="file" name="Photo File" title="Upload the photo.">
-
-            <label for="Licence Selected">License<a id="licenceLink" href="https://creativecommons.org/choose/" target="_blank">(help on choosing a license)</a></label>
-            <select id="licenseSelect" name="Licence Selected">
-              <option id="CC-BY" selected>Creative Commons Attribution License</option>
-              <option id="CC-BY-NC">Creative Commons Attribution-NonCommercial License</option>
-              <option id="CC-BY-SA">Creative Commons Attribution-ShareAlike License</option>
-              <option id="CC-BY-ND">Creative Commons Attribution-NoDerivs License</option>
-              <option id="CC-BY-NC-SA">Creative Commons Attribution-NonCommercial-ShareAlike License</option>
-              <option id="CC-BY-NC-ND">Creative Commons Attribution-NonCommercial-NoDerivs License</option>
+            <label for="holderName">Photographer Name</label>
+            <input id="holderName" name="holderName" class="holderName" type="text" placeholder="Karen Shu" optional />
+            <label for="holderEmail">Photographer Email</label>
+            <input id="holderEmail" name="holderEmail" class="holderEmail" type="text" placeholder="kshu@photos.com" optional />
+            <label for="photoF">Photo</label>
+            <input id="photoF" name="photoF" class="photoF" type="file" />
+            <label>License (<a href="https://creativecommons.org/choose/">help on choosing a license</a>)</label>
+            <select>
+              <option value="CC-BY" selected="selected">Creative Commons Attribution License</option>
+              <option value="CC-BY-NC">Creative Commons Attribution-NonCommercial License</option>
+              <option value="CC-BY-SA">Creative Commons Attribution-ShareAlike License</option>
+              <option value="CC-BY-ND">Creative Commons Attribution-NoDerivs License</option>
+              <option value="CC-BY-NC-SA">Creative Commons Attribution-NonCommercial-ShareAlike License</option>
+              <option value="CC-BY-NC-ND">Creative Commons Attribution-NonCommercial-NoDerivs License</option>
             </select>
           </fieldset>
-          <button id="submitButton" type="submit">Submit</button>
+          <button id="submit" name="submit" class="submit" type="submit" >Submit</button>
         </form>
-      </section>
-    </main>
+       </section>    </main>
     <!-- Your custom form validation code goes in the file js/validate.js -->
     <script src="js/validate.js"></script>
   </body>
