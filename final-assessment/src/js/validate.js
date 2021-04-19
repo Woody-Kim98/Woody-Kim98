@@ -1,31 +1,41 @@
 function validate(event) {
-  var lad = document.getElementById("lad").value;
-  console.log(isNaN(lad));
-  var long = document.getElementById("long").value;
-  console.log(long);
-  var validated = false;
-  if (!isNaN(lad)) {
-    if (lad <= 90 && lad >= -90) {
-      document.getElementById("lad_error").innerHTML = "";
-      validated = true;
-    } else {
-      validated = false;
-      document.getElementById("lad_error").innerHTML =
-        "must be a valid Latitude (-90 to 90)";
-    }
+  // TODO - write custom validation logic to validate the longitude and latitude
+  // values. The latitude value must be a number between -90 and 90; the
+  // longitude value must be a number between -180 and 180. If either/both are
+  // invalid, show the appropriate error message in the form, and stop the
+  // form from being submitted. If both values are valid, allow the form to be
+  // submitted.
+
+  //Getting the values of the lat and long input
+  var lat = document.querySelector("#lat").value;
+  var long = document.querySelector("#long").value;
+
+  //Selecting the error messages in the html
+  var latError = document.getElementById("errorLat");
+  var longError = document.getElementById("errorLong");
+
+  //Resetting the error messages so it can recheck values & show error to proper invalid value
+  resetErrors(latError, longError);
+
+  //Validating the lat and long
+  if (isNaN(lat) || lat < -90 || lat > 90) {
+    showError(latError);
+    return false;
+  } else if (isNaN(long) || long < -180 || long > 180) {
+    showError(longError);
+    return false;
   }
-  if (!isNaN(long)) {
-    if (long <= 180 && long >= -180) {
-      document.getElementById("long_error").innerHTML = "";
-      validated = true;
-    } else {
-      validated = false;
-      document.getElementById("long_error").innerHTML =
-        "must be a valid Longitude (-180 to 180)";
-    }
-  }
-  console.log(validated);
-  return validated;
+}
+
+//Displaying the input error
+function showError(element) {
+  element.style.display = "inline-block";
+}
+
+//Removing both input errors
+function resetErrors(error1, error2) {
+  error1.style.display = "none";
+  error2.style.display = "none";
 }
 
 // Wait for the window to load, then set up the submit event handler for the form.

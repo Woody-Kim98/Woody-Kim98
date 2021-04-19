@@ -1,3 +1,20 @@
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 650;
+}
+
+p {
+  font-weight: 500;
+}
+
 /* Header */
 #hero {
   width: 100%;
@@ -8,12 +25,12 @@
 #hero > img {
   width: 100%;
   height: auto;
-  filter: brightness(50%);
+  filter: brightness(70%);
 }
 
 .quote {
   position: absolute;
-  top: 90px;
+  top: 150px;
   left: 0;
   width: 100%;
   color: white;
@@ -39,6 +56,9 @@
 .buttons > button:hover {
   background-color: lightblue;
 }
+.buttons > button:focus {
+  box-shadow: 0 0 0 2px #ffffff;
+}
 
 td {
   vertical-align: middle;
@@ -48,81 +68,29 @@ time {
   background: inherit;
 }
 
-/* Cards */
-#observation-cards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-#legend {
-  margin: 15px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.card {
-  height: 515px;
-  padding: 0;
-  margin-bottom: 25px;
-  border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
-}
-
-.card-img {
-  width: 375px;
-  height: 375px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.card-body {
-  padding: 0 15px;
-  font-family: Arial, sans-serif;
-}
-
-.card-body a,
-.card-body a:visited {
-  color: black;
+/*Back To Top Link*/
+#back-to-top {
+  float: right;
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-family: inherit;
+  color: var(--form-text);
+  background-color: var(--background);
   text-decoration: none;
+  transition: var(--animation-duration);
+  text-align: center;
 }
 
-.card-body a:hover {
-  text-decoration: underline;
+#back-to-top:hover {
+  background-color: lightblue;
 }
 
-.card-body h3 {
-  font-size: 1.4em;
+#foot-text {
+  float: left;
 }
 
-.card-body h4 {
-  font-size: 1em;
-  margin: 3px;
-}
-
-.card-icons {
-  padding: 0 15px;
-  padding-top: 0;
-  text-align: right;
-} 
-
-.card-icons > i {
-  margin: 5px;
-  font-size: 1.1em;
-}
-
-/* Footer */
-footer {
-  text-align: right;
-}
-
-/**
- * TODO: style the Search Form
- */
-
- :root {
+/* MY CODE FROM HERE DOWN */
+:root {
   --corner-radius: 15px;
 }
 
@@ -194,31 +162,18 @@ footer {
   font-size: 1.1em;
 }
 
-#search{
+#search {
   display: flex;
 }
 
-#search-form{
+#search-form {
   flex: 1;
 }
 
-#search-btn{
+#search-btn {
   padding: 0px 40px;
 }
 
-#search-btn i{
+#search-btn i {
   padding-right: 5px;
 }
-.searchD{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
- }
-
- .searchBar{
-  width: 80%;
- }
-
- .searchBtn{
-  width: 20%;
- }
