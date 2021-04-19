@@ -1,64 +1,35 @@
 function validate(event) {
-  var flag = true;
-  function isNumber(n) {
-    return !isNaN(n);
+  var lad = document.getElementById("lad").value;
+  console.log(isNaN(lad));
+  var long = document.getElementById("long").value;
+  console.log(long);
+  var validated = false;
+  if (!isNaN(lad)) {
+    if (lad <= 90 && lad >= -90) {
+      document.getElementById("lad_error").innerHTML = "";
+      validated = true;
+    } else {
+      validated = false;
+      document.getElementById("lad_error").innerHTML =
+        "must be a valid Latitude (-90 to 90)";
+    }
   }
-
-  function showLatitudeError(msg) {
-    var errMessage = document.querySelector('#error-latitude');
-    errMessage.classList.remove('hidden');
-    errMessage.innerHTML = msg;
+  if (!isNaN(long)) {
+    if (long <= 180 && long >= -180) {
+      document.getElementById("long_error").innerHTML = "";
+      validated = true;
+    } else {
+      validated = false;
+      document.getElementById("long_error").innerHTML =
+        "must be a valid Longitude (-180 to 180)";
+    }
   }
-
-  function showLongitudeError(msg) {
-    var errMessage = document.querySelector('#error-longitude');
-    errMessage.classList.remove('hidden');
-    errMessage.innerHTML = msg;
-  }
-
-  function hideLatitudeError(msg) {
-    var errMessage = document.querySelector('#error-latitude');
-    errMessage.classList.add('hidden');
-    errMessage.innerHTML = '';
-  }  
-
-  function hideLongitudeError(msg) {
-    var errMessage = document.querySelector('#error-longitude');
-    errMessage.classList.add('hidden');
-    errMessage.innerHTML = '';
-  }
-
-  var latitudeV = document.getElementById("latitude").value;
-  var longitudeV = document.getElementById("longitude").value;
-  hideLatitudeError();
-  hideLongitudeError();
-  if(!isNumber(latitudeV) || latitudeV < -90 || latitudeV > 90){
-    flag = false;
-    showLatitudeError("must be a valid Latitude (-90 to 90)");
-  }
-  if(!isNumber(longitudeV) || longitudeV < -180 || longitudeV > 180){
-    flag = false;
-    showLongitudeError("must be a valid Longitude (-180 to 180)");
-  }
-  if(flag){
-    return true;
-  }else{
-    return false;
-
-  }
-}
-
-function showError(element){
-  element.style.display = "inline-block";
-}
-
-function resetErrors(error1, error2){
-  error1.style.display = "none";
-  error2.style.display = "none";
+  console.log(validated);
+  return validated;
 }
 
 // Wait for the window to load, then set up the submit event handler for the form.
-window.onload = function() {
-  const form = document.querySelector('form');
+window.onload = function () {
+  const form = document.querySelector("form");
   form.onsubmit = validate;
 };
